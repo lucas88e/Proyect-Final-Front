@@ -14,14 +14,19 @@ function NavBars() {
             <Nav.Link href="/productos" >Productos</Nav.Link>
             <Nav.Link href="#pricing">Tus Pujas</Nav.Link>
             <NavDropdown title="Categorias" id="collapsible-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Ropa</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-               Electrodomésticos
+              <NavDropdown.Item href="/producto/Ropa">Ropa</NavDropdown.Item>
+              <NavDropdown.Item href="/producto/Electronica">
+               Electronica
               </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Hogar</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.4">
+              <NavDropdown.Item href="/producto/Hogar">Hogar</NavDropdown.Item>
+              <NavDropdown.Item href="/producto/Mascotas">
                 Mascotas
               </NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="/categorias">
+                Todas las Categorias
+              </NavDropdown.Item>
+              
             </NavDropdown>
           </Nav>
           <Nav>

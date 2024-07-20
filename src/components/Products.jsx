@@ -8,6 +8,7 @@ import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import { Link } from "react-router-dom";
 
 function Products() {
   const [productos, setProductos] = useState([]);
@@ -18,7 +19,6 @@ function Products() {
         "http://localhost:5000/productos"
       );
       const productosData = response.data;
-      console.log(productosData);
       setProductos(productosData);
     };
     traerProductos();
@@ -30,21 +30,16 @@ function Products() {
       <div className="orden">
             {productos.map((item) => (
 
-         <Card style={{ width: '18rem' }}>
+         <Card key={item._id} style={{ width: '18rem' }}>
       <Card.Img variant="top" src="holder.js/100px180" />
       <Card.Body>
         <Card.Title>{item.nombre}</Card.Title>
         <Card.Text>
         {item.descripcion}
         </Card.Text>
-        <Button variant="primary">Conoce los precios</Button>
-      </Card.Body>
+        <Link to={`/productos/${item._id}`} variant="primary">Conoce los precios</Link>
+      </Card.Body> 
     </Card>
-
-
-        
-        
-       
       ))}
     </div> </>
   );
