@@ -1,0 +1,21 @@
+.top{
+    border:1px solid gray;
+    height: 20rem;
+    width: 90rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    margin-top: 5rem;
+   
+}
+.orden{
+    border:2px solid  #1a1a1a;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between ;
+    width: 90rem;
+    gap:2rem;
+    flex-wrap: wrap;
+    padding:2rem;
+    margin-top: 1rem;
+}
