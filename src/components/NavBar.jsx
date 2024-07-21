@@ -22,6 +22,9 @@ function NavBars() {
               <NavDropdown.Item href="/producto/Mascotas">
                 Mascotas
               </NavDropdown.Item>
+              <NavDropdown.Item href="/cart">
+                carrito
+              </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="/categorias">
                 Todas las Categorias

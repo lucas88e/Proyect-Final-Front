@@ -17,13 +17,13 @@ function ProductosPorCategoria() {
         console.error("Error fetching products:", error);
       }
     }
-
+    console.log(categoria)
     getProductos();
-  }, [categoria]);
+  }, []);
 
   return (
     <div>
-      <h2>Productos en la categoría: {categoria}</h2>
+      <h2>Productos en la categoría: {productos}</h2>
       <CardGroup>
         {productos.map((producto) => (
           <Card key={producto._id}>

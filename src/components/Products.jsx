@@ -31,7 +31,7 @@ function Products() {
             {productos.map((item) => (
 
          <Card key={item._id} style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
+      <Card.Img variant="top" src={item.imagen} />
       <Card.Body>
         <Card.Title>{item.nombre}</Card.Title>
         <Card.Text>
