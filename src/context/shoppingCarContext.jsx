@@ -5,9 +5,12 @@ const ShoppingCarContext = createContext();
 export const ShoppingCarProvider = ({ children }) => {
   const [items, setItems] = useState([]);
 
+
   const updateItems = (newItem) => {
     let newItems = [...items, newItem];
     setItems(newItems);
+    
+    console.log({items})
   };
 
   const removeItem = (id) => {

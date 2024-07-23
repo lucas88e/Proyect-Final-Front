@@ -10,9 +10,19 @@ const Login = () => {
   const [users, setUsers] = useState([]);
 
 const doLogin = async () =>{
+  const payload = {
+   username,
+   password
+  }
  const responseLogin= await axios
-  .post("http://localhost:5000/register",{username,password})
-  console.log(responseLogin)
+  .post("http://localhost:5000/login",payload)
+  try{
+    console.log(responseLogin)
+
+  }
+  catch{
+    alert("error")
+  }
   // if(responseLogin.status !== 200){
   //   alert("Error!")
   //   return

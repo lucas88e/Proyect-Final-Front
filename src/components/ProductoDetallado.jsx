@@ -6,8 +6,11 @@ import Card from 'react-bootstrap/Card';
 import { Button } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import { useShoppingCarContext } from '../context/shoppingCarContext';
+import './productoDetallado.css'
 function ProductoDetallado() {
   const [product, setProduct] = useState({});
+  const [newPrice, setNewPrice] = useState("")
+  const [pujaConfirmada, setPujaConfirmada] = useState(false)
   const {id} = useParams();
   const {updateItems} = useShoppingCarContext()
   
@@ -17,10 +20,19 @@ function ProductoDetallado() {
       const productData = response.data;
       setProduct(productData);
     }
+   
 
     getProduct();
-}, []);
+}, [id]);
+ const getNewPrice = async (e)=>{
 
+      setNewPrice(e.target.value)
+      setPujaConfirmada(false)
+    }
+    const handlePujaClick = () => {
+     
+      setPujaConfirmada(true)
+    };
   return (<>
    <Card key={product._id} style={{ width: '25rem' }}>
       <Card.Img variant="top" src={product.imagen} />
@@ -34,9 +46,12 @@ function ProductoDetallado() {
         <Card.Text>
           La puja comienza en 
       <h3>{product.precio}</h3> 
+      Puja Actual
+      <h3 className={pujaConfirmada ? "puja-confirmada": ''}>{newPrice}
+        </h3>       
         </Card.Text>
-        <input type='number' className='input' placeholder='Introudce Tu puja' min={product.precio}/>
-        <p> <Button className='m-3' >Pujar AHORA</Button>
+        <input type='number' className='input' value={newPrice} placeholder='Introudce Tu puja' onChange ={getNewPrice} min={product.precio}/>
+        <p> <Button className='m-3' onClick={handlePujaClick} >Pujar AHORA</Button>
         <p> <Button onClick={()=>updateItems(product)} >Añadir al carrito </Button></p>
 
       </p> <Link to={`/`} variant="primary">Volver al Inicio</Link>

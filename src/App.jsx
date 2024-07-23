@@ -4,13 +4,14 @@ import Home from './components/Home'
 import Products from './components/Products'
 import Login from './pages/Login'
 import NavBars from './components/NavBar'
-import Cart from './pages/Cart'
+import Cart from './pages/Carrito'
 import './App.css'
 import ProductoDetallado from './components/ProductoDetallado'
 import Categorias from './components/Categorias'
 import ProductosPorCategoria from './components/ProductosPorCategoria'
 import { ShoppingCarProvider } from './context/shoppingCarContext'
 import Header from './context/Header'
+import Pujas from './pages/Pujas'
 
 function App() {
 
@@ -29,6 +30,8 @@ function App() {
          <Route path="/productos/:id" element = {<ProductoDetallado/>}/>
          <Route path="/categorias" element = {<Categorias/>}/>
          <Route path="/producto/:categorias" element = {<ProductosPorCategoria/>}/>
+         <Route path="/pujas" element = {<Pujas/>}/>
+
         </Routes>
     </Router>
 </ShoppingCarProvider>

@@ -1,6 +1,7 @@
 import { useShoppingCarContext } from "./shoppingCarContext"
 import { Link } from "react-router-dom";
 
+
 const Header = () => {
     const {items} = useShoppingCarContext();
     return  <>
