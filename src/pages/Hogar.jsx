@@ -4,7 +4,7 @@ import axios from 'axios';
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
 
-function ProductosPorCategoria() {
+function Hogar() {
   const { categoria } = useParams();
   const [productos, setProductos] = useState([]);
 
@@ -37,7 +37,6 @@ function ProductosPorCategoria() {
               <Card.Body>
                 <Card.Title>{producto.nombre}</Card.Title>
                 <Card.Text>{producto.descripcion}</Card.Text>
-                <Card.Text>Talla: {producto.talla}</Card.Text>
               </Card.Body>
               <Card.Footer>
                 <small className="text-muted">Precio: ${producto.precio}</small>
@@ -52,4 +51,4 @@ function ProductosPorCategoria() {
   );
 }
 
-export default ProductosPorCategoria;
+export default Hogar;

@@ -29,7 +29,8 @@ function ProductoDetallado() {
       setNewPrice(e.target.value)
       setPujaConfirmada(false)
     }
-    const handlePujaClick = () => {
+    const handlePujaClick = (product) => {
+      updateItems(product)
      
       setPujaConfirmada(true)
     };
@@ -51,8 +52,8 @@ function ProductoDetallado() {
         </h3>       
         </Card.Text>
         <input type='number' className='input' value={newPrice} placeholder='Introudce Tu puja' onChange ={getNewPrice} min={product.precio}/>
-        <p> <Button className='m-3' onClick={handlePujaClick} >Pujar AHORA</Button>
-        <p> <Button onClick={()=>updateItems(product)} >Añadir al carrito </Button></p>
+        <p> <Button className='m-3' onClick={()=>handlePujaClick(product)} >Pujar AHORA</Button>
+        {/* <p> <Button onClick={()=>updateItems(product)} >Añadir al carrito </Button></p> */}
 
       </p> <Link to={`/`} variant="primary">Volver al Inicio</Link>
       </Card.Body> 

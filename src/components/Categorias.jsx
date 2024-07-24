@@ -35,7 +35,7 @@ function Categorias() {
               </Card.Text>
             </Card.Body>
             <Card.Footer>
-            <Link to={`/producto/${categoria.categoria}`}>IR</Link>
+            <Link to={`/${categoria.categoria}`}>IR</Link>
             </Card.Footer>
             
           </Card>

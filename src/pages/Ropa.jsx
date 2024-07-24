@@ -9,12 +9,13 @@ function ProductosPorCategoria() {
   const [productos, setProductos] = useState([]);
 
   useEffect(() => {
-    
+     
       const getProductos = async () => {
         try {
           const url = `http://localhost:5000/productos`;
           const response = await axios.get(url);
           setProductos(response.data);
+          console.log(response.data)
         } catch (error) {
           console.error("Error fetching products:", error);
         }
@@ -24,8 +25,8 @@ function ProductosPorCategoria() {
   }, []);
 
   // Filtrar productos por categoría "Hogar"
-  const productosFiltrados = productos.filter(producto => producto.categoria === "Hogar");
-
+  const productosFiltrados = productos.filter(producto => producto.categoria === "Ropa");
+console.log(productosFiltrados)
   return (
     <div>
       <h2>Productos en la categoría: {categoria}</h2>

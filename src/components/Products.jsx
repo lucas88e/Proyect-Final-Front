@@ -20,6 +20,7 @@ function Products() {
       );
       const productosData = response.data;
       setProductos(productosData);
+      console.log(productosData)
     };
     traerProductos();
   }, []);

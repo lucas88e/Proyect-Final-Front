@@ -17,19 +17,24 @@ const doLogin = async () =>{
  const responseLogin= await axios
   .post("http://localhost:5000/login",payload)
   try{
-    console.log(responseLogin)
+    const responseLogin = await axios.post("http://localhost:5000/login", payload, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    console.log(responseLogin);
 
   }
   catch{
     alert("error")
   }
-  // if(responseLogin.status !== 200){
-  //   alert("Error!")
-  //   return
-  // }
-  // const login = responseLogin.data;
-  // localStorage.setItem("token",login.token)
-  // localStorage.setItem("user",login._id)
+  if(responseLogin.status !== 200){
+    alert("Error!")
+    return
+  }
+  const login = responseLogin.data;
+  localStorage.setItem("token",login.token)
+  localStorage.setItem("user",login._id)
 
 
 

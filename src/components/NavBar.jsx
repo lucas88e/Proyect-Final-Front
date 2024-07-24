@@ -26,7 +26,7 @@ function NavBars() {
               <NavDropdown.Item href="/producto/Ropa">Ropa</NavDropdown.Item>
               <NavDropdown.Item href="/producto/Electronica">Electrónica</NavDropdown.Item>
               <NavDropdown.Item href="/producto/Hogar">Hogar</NavDropdown.Item>
-              <NavDropdown.Item href="/producto/Mascotas">Mascotas</NavDropdown.Item>
+              <NavDropdown.Item href="/Mascotas">Mascotas</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="/categorias">Todas las Categorías</NavDropdown.Item>
             </NavDropdown>
