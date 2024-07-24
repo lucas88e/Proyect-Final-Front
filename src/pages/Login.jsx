@@ -3,11 +3,12 @@ import React, {
   useState,
 } from "react";
 import axios from "axios";
+import { useShoppingCarContext } from "../context/shoppingCarContext";
 
 const Login = () => {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const [users, setUsers] = useState([]);
+const {setUser,user} = useShoppingCarContext()  
 
 const doLogin = async () =>{
   const payload = {
@@ -33,14 +34,15 @@ const doLogin = async () =>{
     return
   }
   const login = responseLogin.data;
+  console.log(login)
   localStorage.setItem("token",login.token)
   localStorage.setItem("user",login._id)
 
-
+  const responseUser = await axios.get(`http://localhost:5000/users/${login._id}`);
+  const user = responseUser.data;
+  setUser(user);
 
 }
-
-
   return (
     <div>
       <h1>Introduce tu nombre y contraseña</h1>
@@ -49,6 +51,7 @@ const doLogin = async () =>{
       <p><label>Contraseña</label>
       <input value={password} onChange={(e)=>setPassword(e.target.value)} type="password"></input></p>
       <button onClick={doLogin}>Iniciar Sesion</button>
+      <h1>Bienvenido {user.username}</h1>
     </div>
   );
 };

@@ -23,10 +23,10 @@ function NavBars() {
             <Nav.Link href="/productos">Productos</Nav.Link>
             <Nav.Link href="/pujas">Tus Pujas</Nav.Link>
             <NavDropdown title="Categorías" id="collapsible-nav-dropdown">
-              <NavDropdown.Item href="/producto/Ropa">Ropa</NavDropdown.Item>
-              <NavDropdown.Item href="/producto/Electronica">Electrónica</NavDropdown.Item>
-              <NavDropdown.Item href="/producto/Hogar">Hogar</NavDropdown.Item>
-              <NavDropdown.Item href="/Mascotas">Mascotas</NavDropdown.Item>
+              <NavDropdown.Item href="/ropa">Ropa</NavDropdown.Item>
+              <NavDropdown.Item href="/electronica">Electrónica</NavDropdown.Item>
+              <NavDropdown.Item href="/hogar">Hogar</NavDropdown.Item>
+              <NavDropdown.Item href="/mascotas">Mascotas</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="/categorias">Todas las Categorías</NavDropdown.Item>
             </NavDropdown>

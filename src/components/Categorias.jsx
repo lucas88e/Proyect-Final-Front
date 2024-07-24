@@ -27,7 +27,7 @@ function Categorias() {
       <CardGroup>
         {categorias.map((categoria) => (
           <Card key={categoria._id}>
-            <Card.Img variant="top" src="holder.js/100px160" />
+            <Card.Img variant="top" src={categoria.imagen} />
             <Card.Body>
               <Card.Title>{categoria.categoria}</Card.Title>
               <Card.Text>

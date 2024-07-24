@@ -15,14 +15,18 @@ import Pujas from './pages/Pujas'
 import Mascotas from "./pages/Mascotas"
 import Electronica from './pages/Electronica'
 import Ropa from './pages/Ropa'
+import { useState } from 'react'
 
 function App() {
+  const [isLoginPage, setIsLoginPage] = useState(false)
+
 
 
   return (
     <>
         <ShoppingCarProvider>
       <Router>
+        
         <Header/>
         <NavBars/>
         <Routes>

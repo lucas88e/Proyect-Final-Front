@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 
 
 const Header = () => {
-    const {items} = useShoppingCarContext();
+    const {items,user} = useShoppingCarContext();
     return  <>
-      <h1>Bazar Subastas Online </h1>
-      <Link to="/cart"><div>Tienes {items.length} productos en el carrito</div></Link>
+      <h1>Bazar Subastas Online {user.username} </h1>
+      <Link to="/cart"><div>Tienes {items.length} productos en puja</div></Link>
     </>
 }
 

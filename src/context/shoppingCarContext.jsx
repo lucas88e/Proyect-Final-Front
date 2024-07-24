@@ -4,6 +4,8 @@ const ShoppingCarContext = createContext();
 
 export const ShoppingCarProvider = ({ children }) => {
   const [items, setItems] = useState([]);
+  const [user,setUser] = useState({})
+  const [newPrice, setNewPrice] = useState()
 
 
   const updateItems = (newItem) => {
@@ -15,12 +17,12 @@ export const ShoppingCarProvider = ({ children }) => {
 
   const removeItem = (id) => {
     let newItems = [...items];
-    newItems = newItems.filter((currentItem) => currentItem.id !== id);
+    newItems = newItems.filter((currentItem) => currentItem._id !== id);
     setItems(newItems);
   }
 
   return (
-    <ShoppingCarContext.Provider value={{ items, updateItems, removeItem }}>
+    <ShoppingCarContext.Provider value={{ items, updateItems, removeItem,user,setUser,newPrice,setNewPrice}}>
       {children}
     </ShoppingCarContext.Provider>
   );

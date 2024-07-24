@@ -19,3 +19,14 @@
     padding:2rem;
     margin-top: 1rem;
 }
+.card-horizontal {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .card-horizontal .card-img-top {
+    width: 180px; 
+    height: auto;
+  }
+  
+ 
