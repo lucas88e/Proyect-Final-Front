@@ -18,13 +18,13 @@ const Item = ({ itemData }) => {
       <Card key={itemData._id} className="card-horizontal">
       <Card.Img variant="top" src={itemData.imagen} />
       <Card.Body>
-        <Card.Title>{itemData.nombre}</Card.Title>
-        <Card.Text>
-        {itemData.descripcion}
-        <p>Puja actual: {itemData.newPrice}€ </p>
-        <h3>Tiempo restante:</h3>
+        <Card.Title><h2>{itemData.nombre}</h2></Card.Title>
+        <Card.Text> <b>Descripcion:</b></Card.Text>
+        {itemData.descripcion} 
+        <Card.Text><b>Puja actual:</b><span className="tamaño"> {itemData.newPrice}€ </span></Card.Text>
+        <span className="tamaño">Tiempo restante:</span >
 
-        </Card.Text>
+       
         <Button variant="danger" onClick={() => removeItem(itemData._id)}>Eliminar</Button>
 
       </Card.Body> 

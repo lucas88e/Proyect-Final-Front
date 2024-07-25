@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
+import { Link } from 'react-router-dom';
 
 function ProductosPorCategoria() {
   const { categoria } = useParams();
@@ -24,8 +25,8 @@ function ProductosPorCategoria() {
     
   }, []);
 
-  // Filtrar productos por categoría "Hogar"
-  const productosFiltrados = productos.filter(producto => producto.categoria === "Electrónica");
+  // Filtrar productos por categoría 
+  const productosFiltrados = productos.filter(producto => producto.categoria === "Electronica");
 console.log(productosFiltrados)
   return (
     <div>
@@ -34,14 +35,17 @@ console.log(productosFiltrados)
         {productosFiltrados.length > 0 ? (
           productosFiltrados.map((producto) => (
             <Card key={producto._id}>
+                <Card.Text> <h2> {producto.categoria}</h2></Card.Text>
+
               <Card.Img variant="top" src={producto.imagen} />
               <Card.Body>
                 <Card.Title>{producto.nombre}</Card.Title>
                 <Card.Text>{producto.descripcion}</Card.Text>
               </Card.Body>
-              <Card.Footer>
-                <small className="text-muted">Precio: ${producto.precio}</small>
-              </Card.Footer>
+              <h3>{producto.precio} €</h3>
+              <Link to={`/productos/${producto._id}`} variant="primary">Accede para realizar puja</Link>
+
+
             </Card>
           ))
         ) : (

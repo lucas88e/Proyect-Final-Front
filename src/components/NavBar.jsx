@@ -10,7 +10,7 @@ import { useShoppingCarContext } from '../context/shoppingCarContext';
 function NavBars() {
   const { items } = useShoppingCarContext();
   const getItemCount = () => items.length;
-
+  const [isLoginPage, setIsLoginPage] = useState(false)
 
 
   return (
@@ -32,12 +32,14 @@ function NavBars() {
             </NavDropdown>
           </Nav>
           <Nav>
-            <Nav.Link href="/login">Login</Nav.Link>
-            <Nav.Link eventKey={2} href="/cart">
+          <button onClick={() => setIsLoginPage(!isLoginPage)}>Logout</button>
+          {isLoginPage ? <Login/> :
+            <Nav.Link href="/login">Login</Nav.Link>}
+            <Nav.Link  href="/cart">
             <IconButton edge="end" color="inherit">
-                <Badge badgeContent={getItemCount} color="primary">
+               
                   <ShoppingCartIcon />
-                </Badge>
+               
               </IconButton>
             </Nav.Link>
           </Nav>

@@ -3,11 +3,11 @@ import React, {
   useEffect,
 } from "react";
 import axios from "axios";
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-import CardGroup from 'react-bootstrap/CardGroup';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
+import CardGroup from "react-bootstrap/CardGroup";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 import { Link } from "react-router-dom";
 
 function Products() {
@@ -20,7 +20,7 @@ function Products() {
       );
       const productosData = response.data;
       setProductos(productosData);
-      console.log(productosData)
+      console.log(productosData);
     };
     traerProductos();
   }, []);
@@ -29,25 +29,38 @@ function Products() {
     <>
       <h2>Productos Actualmente en Subasta</h2>
       <div className="orden">
-            {productos.map((item) => (
-
-         <Card key={item._id} style={{ width: '18rem' }}>
-      <Card.Img variant="top" src={item.imagen} />
-      <Card.Body>
-        <Card.Title>{item.nombre}</Card.Title>
-        <Card.Text>
-        {item.descripcion}
-        </Card.Text>
-        <Link to={`/productos/${item._id}`} variant="primary">Conoce los precios</Link>
-      </Card.Body> 
-    </Card>
-      ))}
-    </div> </>
+        {productos.map((item) => (
+          <Card
+            key={item._id}
+            style={{ width: "18rem" }}
+          >
+            <Card.Img
+              variant="top"
+              src={item.imagen}
+            />
+            <Card.Body>
+              <Card.Title>
+                {item.nombre}
+              </Card.Title>
+              <Card.Text>
+                {item.descripcion}
+              </Card.Text>
+              <Link
+                to={`/productos/${item._id}`}
+              >
+                Conoce los precios
+              </Link>
+            </Card.Body>
+          </Card>
+        ))}
+      </div>{" "}
+    </>
   );
 }
 
 export default Products;
-{/* <Row xs={1} md={2} className="g-4">
+{
+  /* <Row xs={1} md={2} className="g-4">
 {productos.map((item,idx) => (
   <Col key={idx}>
     <Card>
@@ -64,4 +77,5 @@ export default Products;
   </Col>
 ))}
 </Row>
-         */}
+         */
+}

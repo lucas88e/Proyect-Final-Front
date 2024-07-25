@@ -29,4 +29,12 @@
     height: auto;
   }
   
- 
+ .margen{
+    margin-top: 50rem;
+ }
+ .tamaño{
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+  font-weight: bold;
+ }

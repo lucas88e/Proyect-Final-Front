@@ -9,7 +9,7 @@ import './App.css'
 import ProductoDetallado from './components/ProductoDetallado'
 import Categorias from './components/Categorias'
 import Hogar from './pages/Hogar'
-import { ShoppingCarProvider } from './context/shoppingCarContext'
+import { ShoppingCarProvider, useShoppingCarContext } from './context/shoppingCarContext'
 import Header from './context/Header'
 import Pujas from './pages/Pujas'
 import Mascotas from "./pages/Mascotas"
@@ -19,6 +19,7 @@ import { useState } from 'react'
 
 function App() {
   const [isLoginPage, setIsLoginPage] = useState(false)
+  // const {user} = useShoppingCarContext()
 
 
 
@@ -30,7 +31,12 @@ function App() {
         <Header/>
         <NavBars/>
         <Routes>
-        <Route path ="/" element={<Home/>}/>       
+       {/* { !user.length > 0
+       ?<Login/>
+       : */}
+        <Route path ="/" element={<Home/>}/>
+        
+              
          <Route path="/pujas" element = {<Pujas/>}/>
          <Route path="/productos" element = {<Products/>}/>
          <Route path="/cart" element={<Cart/>} />
