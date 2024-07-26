@@ -4,6 +4,7 @@ import React, {
 import axios from "axios";
 import { useShoppingCarContext } from "../context/shoppingCarContext";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/auth";
 
 
 const Login = () => {
@@ -11,42 +12,42 @@ const Login = () => {
   const [password, setPassword] = useState("");
 const {setUser,user} = useShoppingCarContext()  
 const navigate = useNavigate()
+const {toggleAuth} = useAuth()
 
 const doLogin = async () =>{
   const payload = {
    username,
    password
   }
- const responseLogin= await axios
-  .post("http://localhost:5000/login",payload)
-  try{
+
+  try {
     const responseLogin = await axios.post("http://localhost:5000/login", payload, {
       headers: {
         'Content-Type': 'application/json'
       }
     });
-    console.log(responseLogin);
 
-  }
-  catch{
-    alert("error")
-  }
-  if(responseLogin.status !== 200){
-    alert("Error!")
-    return
-  }
-  const login = responseLogin.data;
-  console.log(login)
-  localStorage.setItem("token",login.token)
-  localStorage.setItem("user",login._id)
+    if (responseLogin.status !== 200) {
+      alert("Error!");
+      return;
+    }
 
-  const responseUser = await axios.get(`http://localhost:5000/users/${login._id}`);
-  const user = responseUser.data;
-  setUser(user);
-  navigate("/")
-  
+    const login = responseLogin.data;
+    console.log(login);
+    localStorage.setItem("token", login.token);
+    localStorage.setItem("user", login._id);
 
-}
+    const responseUser = await axios.get(`http://localhost:5000/users/${login._id}`);
+    const user = responseUser.data;
+    setUser(user);
+    toggleAuth()
+    navigate("/");
+
+  } catch (error) {
+    alert("Error");
+    console.error("Login error:", error);
+  }
+};
   return (
     <div>
       <h1>Introduce tu nombre y contraseña</h1>
@@ -55,7 +56,6 @@ const doLogin = async () =>{
       <p><label>Contraseña</label>
       <input value={password} onChange={(e)=>setPassword(e.target.value)} type="password"></input></p>
       <button onClick={doLogin}>Iniciar Sesion</button>
-      <h1>Bienvenido {user.username}</h1>
     </div>
   );
 };

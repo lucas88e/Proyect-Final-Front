@@ -9,8 +9,6 @@ function Home() {
       <h4>Somos una gran comunidad nos encargamos de subastar productos asequibles para cualquier persona, y de primera calidad.
         No lo dudes elige tu producto y realiza una puja si tienes suerte será tuyo
       </h4>
-   
-    
     </div>
     <Products/>
     </>
