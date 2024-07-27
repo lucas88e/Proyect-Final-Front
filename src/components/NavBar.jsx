@@ -49,9 +49,9 @@ function NavBars() {
             <Nav.Link href="/productos">
               Productos
             </Nav.Link>
-            <Nav.Link href="/pujas">
+            <Link to="/cart">
               Tus Pujas
-            </Nav.Link>
+            </Link>
             <NavDropdown
               title="Categorías"
               id="collapsible-nav-dropdown"

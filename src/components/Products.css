@@ -41,3 +41,12 @@
  .home{
   font-size: large
  }
+
+ .tiempo{
+  border: 3px solid red;
+  background-color: #1a1a1a;
+  color: white;
+  width: fit-content;
+  padding: 8px;
+  font-size: 30px;
+ }

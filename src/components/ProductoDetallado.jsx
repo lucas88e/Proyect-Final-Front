@@ -7,6 +7,7 @@ import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useShoppingCarContext } from "../context/shoppingCarContext";
 import { format } from "date-fns";
+import { useNavigate } from "react-router-dom";
 import "./productoDetallado.css";
 
 function ProductoDetallado() {
@@ -15,20 +16,31 @@ function ProductoDetallado() {
     useState(false);
   const { id } = useParams();
   const { updateItems } = useShoppingCarContext();
-
+  const navigate = useNavigate()
   useEffect(() => {
     const getProduct = async () => {
-      const response = await axios.get(
-        `http://localhost:5000/productos/${id}`
-      );
+     try{ const response = await axios.get(
+        `http://localhost:5000/productos/${id}`,
+         {
+          headers: {
+              'x-auth-token': localStorage.getItem("token")
+          }
+      })
+      ;
       const productData = response.data;
-      productData.newPrice = productData.precio; // Initialize newPrice with the product's initial price
+      productData.newPrice = productData.precio; 
       setProduct(productData);
+     }catch(error){
+       navigate("/")
+      alert("No tienes permisos logueate primero",error)
+
+     }
     };
 
     getProduct();
   }, [id]);
 
+  
   const getNewPrice = (e) => {
     const value = Number(e.target.value);
     setProduct((prevProduct) => ({
@@ -42,7 +54,7 @@ function ProductoDetallado() {
     const updatedProduct = {
       ...product,
       newPrice: product.newPrice,
-    }; // Ensure newPrice is part of the product object
+    }; 
     updateItems(updatedProduct);
     setPujaConfirmada(true);
     localStorage.setItem(
@@ -54,7 +66,7 @@ function ProductoDetallado() {
   const fechaFormateada = product.fechaFinal
     ? format(
         new Date(product.fechaFinal),
-        "dd-MM-yyyy"
+        "dd-MM-yyyy / HH:mm  "
       )
     : ""; // Formateo de fecha horas y minutos
 

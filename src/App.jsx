@@ -10,7 +10,6 @@ import Categorias from './components/Categorias'
 import Hogar from './pages/Hogar'
 import { ShoppingCarProvider } from './context/shoppingCarContext'
 import Header from './context/Header'
-import Pujas from './pages/Pujas'
 import Mascotas from "./pages/Mascotas"
 import Electronica from './pages/Electronica'
 import Ropa from './pages/Ropa'
@@ -28,7 +27,6 @@ function App() {
         <Header/>
           <Routes>
           <Route path ="/" element={<Home/>}/>  
-          <Route path="/pujas" element = {<Pujas/>}/>
           <Route path="/productos" element = {<Products/>}/>
           <Route path="/cart" element={<Cart/>} />
           <Route path="/login" element = {<Login/>}/>

@@ -12,7 +12,6 @@ export const ShoppingCarProvider = ({ children }) => {
     let newItems = [...items, newItem];
     setItems(newItems);
     
-    console.log({items})
   };
 
   const removeItem = (id) => {
