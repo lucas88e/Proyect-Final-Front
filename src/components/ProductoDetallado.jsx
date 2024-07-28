@@ -17,10 +17,11 @@ function ProductoDetallado() {
   const { id } = useParams();
   const { updateItems } = useShoppingCarContext();
   const navigate = useNavigate()
+  const url = process.env.REACT_APP_API_URL;
   useEffect(() => {
     const getProduct = async () => {
      try{ const response = await axios.get(
-        `http://localhost:5000/productos/${id}`,
+        `${url}/productos/${id}`,
          {
           headers: {
               'x-auth-token': localStorage.getItem("token")
