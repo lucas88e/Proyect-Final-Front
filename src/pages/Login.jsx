@@ -10,7 +10,7 @@ import { useAuth } from "../context/auth";
 const Login = () => {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
-const {setUser,user} = useShoppingCarContext()  
+const {setUser,user} = useShoppingCarContext() 
 const navigate = useNavigate()
 const {toggleAuth} = useAuth()
 

@@ -15,6 +15,8 @@ import Electronica from './pages/Electronica'
 import Ropa from './pages/Ropa'
 import { AuthProvider } from './context/auth'
 import './App.css'
+import ProtectedRoute from './components/ProtectedRoute'
+import MiPerfil from './pages/MiPerfil'
 
 function App() {
 
@@ -28,7 +30,10 @@ function App() {
           <Routes>
           <Route path ="/" element={<Home/>}/>  
           <Route path="/productos" element = {<Products/>}/>
-          <Route path="/cart" element={<Cart/>} />
+          <Route path="/cart" element={<Cart/>}/>
+          <Route path="/perfil" element={<MiPerfil/>}/>
+
+          {/* <Route path="/cart" element={<ProtectedRoute element={<Cart/>}/>}/> */}
           <Route path="/login" element = {<Login/>}/>
           <Route path="/productos/:id" element = {<ProductoDetallado/>}/>
           <Route path="/categorias" element = {<Categorias/>}/>

@@ -10,12 +10,16 @@ import { useShoppingCarContext } from "../context/shoppingCarContext";
 import { useAuth } from "../context/auth";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
+import Avatar from "@mui/material/Avatar";
+import {
+  deepOrange,
+  deepPurple,
+} from "@mui/material/colors";
 
 function NavBars() {
-  const { items } = useShoppingCarContext();
+  const { items, user } = useShoppingCarContext();
   const getItemCount = () => items.length;
-  const { isLoginPage, toggleAuth } =
-    useAuth();
+  const { isLoginPage, toggleAuth } = useAuth();
 
   const handleLogout = async () => {
     try {
@@ -49,9 +53,7 @@ function NavBars() {
             <Nav.Link href="/productos">
               Productos
             </Nav.Link>
-            <Link to="/cart">
-              Tus Pujas
-            </Link>
+
             <NavDropdown
               title="Categorías"
               id="collapsible-nav-dropdown"
@@ -76,8 +78,34 @@ function NavBars() {
           </Nav>
           <Nav>
             {isLoginPage ? (
+              <Link to="/cart">
+                <IconButton
+                  edge="end"
+                  color="inherit"
+                >
+                  <ShoppingCartIcon className="m-2" />
+                </IconButton>
+              </Link>
+            ) : (
+              ""
+            )}
+            {isLoginPage ? (
+              <Link to="/perfil">
+                <Avatar
+                  className="m-2"
+                  sx={{
+                    bgcolor: deepPurple[500],
+                  }}
+                  alt={user.username}
+                  src="/broken-image.jpg"
+                />
+              </Link>
+            ) : (
+              ""
+            )}
+            {isLoginPage ? (
               <Button
-                className="btn btn-outline-light m-1"
+                className="btn btn-outline-light m-2"
                 onClick={handleLogout}
               >
                 Logout
@@ -86,18 +114,6 @@ function NavBars() {
               <Nav.Link href="/login">
                 Login
               </Nav.Link>
-            )}
-            {isLoginPage ? (
-              <Link to="/cart">
-                <IconButton
-                  edge="end"
-                  color="inherit"
-                >
-                  <ShoppingCartIcon className="m-1" />
-                </IconButton>
-              </Link>
-            ) : (
-              ""
             )}
           </Nav>
         </Navbar.Collapse>
