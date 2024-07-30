@@ -40,7 +40,6 @@ const doLogin = async () =>{
     const responseUser = await axios.get(`http://localhost:5000/users/${login._id}`);
     const user = responseUser.data;
     setUser(user);
-    toggleAuth()
     navigate("/");
 
   } catch (error) {

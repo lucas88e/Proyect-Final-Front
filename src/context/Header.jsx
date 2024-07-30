@@ -5,7 +5,7 @@ import HomeIcon from "@mui/icons-material/Home";
 
 const Header = () => {
   const { items, user } = useShoppingCarContext();
-  const { isLoginPage } = useAuth();
+  const { isAuth } = useAuth();
 
   return (
     <>
@@ -17,12 +17,12 @@ const Header = () => {
             src="/logo2.png"
           ></img>
         </h1>
-        {isLoginPage ? (
+        {isAuth ? (
           <h3>Bienvenido {user.username}</h3>
         ) : (
           ""
         )}
-        {isLoginPage ? (
+        {isAuth ? (
           <Link to="/cart">
             <div className="m-4">
               Tienes {items.length} productos en puja

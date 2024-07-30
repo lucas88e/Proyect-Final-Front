@@ -19,7 +19,7 @@ import {
 function NavBars() {
   const { items, user } = useShoppingCarContext();
   const getItemCount = () => items.length;
-  const { isLoginPage, toggleAuth } = useAuth();
+  const { isAuth, toggleAuth } = useAuth();
 
   const handleLogout = async () => {
     try {
@@ -83,7 +83,7 @@ function NavBars() {
             </NavDropdown>
           </Nav>
           <Nav>
-            {isLoginPage && (
+            {isAuth ? (
               <>
                 <Link to="/cart">
                   <IconButton edge="end" color="inherit">
@@ -91,17 +91,28 @@ function NavBars() {
                   </IconButton>
                 </Link>
                 <Link to="/perfil">
-                  <Avatar className="m-2" sx={{ bgcolor: deepPurple[500] }} alt={user.username} src={user.avatar} />
+                  <Avatar
+                    className="m-2"
+                    sx={{ bgcolor: deepPurple[500] }}
+                    alt={user?.username}
+                    src={user?.avatar}
+                  />
                 </Link>
-                <Button className="btn btn-outline-light m-2" onClick={handleLogout}>
+                <Button
+                  className="btn btn-outline-light m-2"
+                  onClick={handleLogout}
+                >
                   Logout
                 </Button>
               </>
-            )}
-            {!isLoginPage && (
+            ) : (
               <>
-                <Nav.Link as={Link} to="/register">Register</Nav.Link>
-                <Nav.Link as={Link} to="/login">Login</Nav.Link>
+                <Nav.Link as={Link} to="/register">
+                  Register
+                </Nav.Link>
+                <Nav.Link as={Link} to="/login">
+                  Login
+                </Nav.Link>
               </>
             )}
           </Nav>
