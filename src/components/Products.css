@@ -39,7 +39,8 @@
   font-weight: bold;
  }
  .home{
-  font-size: large
+  font-size: large;
+  margin-bottom: 10px;
  }
 
  .tiempo{
@@ -49,4 +50,14 @@
   width: fit-content;
   padding: 8px;
   font-size: 30px;
+ }
+ .imgLogo{
+  margin-top: 60px;
+ }
+
+ .header{
+  margin-left: 15%;
+ }
+ .center{
+  margin-left: 12%;
  }

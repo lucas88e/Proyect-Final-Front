@@ -44,13 +44,19 @@ function NavBars() {
       variant="dark"
     >
       <Container>
-        <Navbar.Brand className="px-5" href="/">
-          Bazar Subastas Online
+        <Navbar.Brand as={Link}  className="px-5" to="/">
+        <img
+              src="/logo2.png"
+              width="200"
+              height="50"
+              className="d-inline-block align-top"
+              alt="React Bootstrap logo"
+            />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="/productos">
+            <Nav.Link as={Link}  to="/productos">
               Productos
             </Nav.Link>
 
@@ -58,62 +64,45 @@ function NavBars() {
               title="Categorías"
               id="collapsible-nav-dropdown"
             >
-              <NavDropdown.Item href="/ropa">
+              <NavDropdown.Item as={Link}  to="/ropa">
                 Ropa
               </NavDropdown.Item>
-              <NavDropdown.Item href="/electronica">
+              <NavDropdown.Item as={Link} to="/electronica">
                 Electrónica
               </NavDropdown.Item>
-              <NavDropdown.Item href="/hogar">
+              <NavDropdown.Item as={Link} to="/hogar">
                 Hogar
               </NavDropdown.Item>
-              <NavDropdown.Item href="/mascotas">
+              <NavDropdown.Item as={Link} to="/mascotas">
                 Mascotas
               </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="/categorias">
+              <NavDropdown.Item as={Link} to="/categorias">
                 Todas las Categorías
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
           <Nav>
-            {isLoginPage ? (
-              <Link to="/cart">
-                <IconButton
-                  edge="end"
-                  color="inherit"
-                >
-                  <ShoppingCartIcon className="m-2" />
-                </IconButton>
-              </Link>
-            ) : (
-              ""
+            {isLoginPage && (
+              <>
+                <Link to="/cart">
+                  <IconButton edge="end" color="inherit">
+                    <ShoppingCartIcon className="m-2" />
+                  </IconButton>
+                </Link>
+                <Link to="/perfil">
+                  <Avatar className="m-2" sx={{ bgcolor: deepPurple[500] }} alt={user.username} src={user.avatar} />
+                </Link>
+                <Button className="btn btn-outline-light m-2" onClick={handleLogout}>
+                  Logout
+                </Button>
+              </>
             )}
-            {isLoginPage ? (
-              <Link to="/perfil">
-                <Avatar
-                  className="m-2"
-                  sx={{
-                    bgcolor: deepPurple[500],
-                  }}
-                  alt={user.username}
-                  src="/broken-image.jpg"
-                />
-              </Link>
-            ) : (
-              ""
-            )}
-            {isLoginPage ? (
-              <Button
-                className="btn btn-outline-light m-2"
-                onClick={handleLogout}
-              >
-                Logout
-              </Button>
-            ) : (
-              <Nav.Link href="/login">
-                Login
-              </Nav.Link>
+            {!isLoginPage && (
+              <>
+                <Nav.Link as={Link} to="/register">Register</Nav.Link>
+                <Nav.Link as={Link} to="/login">Login</Nav.Link>
+              </>
             )}
           </Nav>
         </Navbar.Collapse>

@@ -9,15 +9,17 @@ import { useShoppingCarContext } from "../context/shoppingCarContext";
 import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
 import "./productoDetallado.css";
+import { useAuth } from "../context/auth";
 
 function ProductoDetallado() {
   const [product, setProduct] = useState({});
   const [pujaConfirmada, setPujaConfirmada] =
     useState(false);
   const { id } = useParams();
-  const { updateItems } = useShoppingCarContext();
+  const { updateItems, user} = useShoppingCarContext();
+  const {toggleAuth} = useAuth()
   const navigate = useNavigate()
-  const url = process.env.REACT_APP_API_URL;
+  const url =  "http://localhost:5000"
   useEffect(() => {
     const getProduct = async () => {
      try{ const response = await axios.get(
@@ -30,8 +32,10 @@ function ProductoDetallado() {
       ;
       const productData = response.data;
       productData.newPrice = productData.precio; 
+      toggleAuth()
       setProduct(productData);
      }catch(error){
+      toggleAuth()
        navigate("/")
       alert("No tienes permisos logueate primero",error)
 
@@ -39,7 +43,7 @@ function ProductoDetallado() {
     };
 
     getProduct();
-  }, [id]);
+  }, []);
 
   
   const getNewPrice = (e) => {
@@ -118,8 +122,9 @@ function ProductoDetallado() {
                   : "tamaño"
               }
             >
-              {product.newPrice}€
+              {product.newPrice}€,
             </span>
+              {user.username}
           </Card.Text>
           <input
             type="number"
@@ -139,7 +144,7 @@ function ProductoDetallado() {
               Pujar AHORA
             </Button>
           </p>
-          <Link to={`/`}>Volver al Inicio</Link>
+          <Link to={`/`}>Seguir Pujando</Link>
         </Card.Body>
       </Card>
     </>

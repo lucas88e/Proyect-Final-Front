@@ -7,16 +7,14 @@ import NavBars from './components/NavBar'
 import Cart from './pages/Carrito'
 import ProductoDetallado from './components/ProductoDetallado'
 import Categorias from './components/Categorias'
-import Hogar from './pages/Hogar'
 import { ShoppingCarProvider } from './context/shoppingCarContext'
 import Header from './context/Header'
-import Mascotas from "./pages/Mascotas"
-import Electronica from './pages/Electronica'
-import Ropa from './pages/Ropa'
+import {Ropa,Mascotas,Electronica,Hogar} from  './pages/todasCategorias'
 import { AuthProvider } from './context/auth'
 import './App.css'
 import ProtectedRoute from './components/ProtectedRoute'
 import MiPerfil from './pages/MiPerfil'
+import Registro from './pages/Registro'
 
 function App() {
 
@@ -32,7 +30,7 @@ function App() {
           <Route path="/productos" element = {<Products/>}/>
           <Route path="/cart" element={<Cart/>}/>
           <Route path="/perfil" element={<MiPerfil/>}/>
-
+          <Route path="/register" element={<Registro/>}/>
           {/* <Route path="/cart" element={<ProtectedRoute element={<Cart/>}/>}/> */}
           <Route path="/login" element = {<Login/>}/>
           <Route path="/productos/:id" element = {<ProductoDetallado/>}/>

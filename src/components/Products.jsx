@@ -5,13 +5,13 @@ import React, {
 import axios from "axios";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import CardGroup from "react-bootstrap/CardGroup";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-
+import { useAuth } from "../context/auth";
 function Products() {
   const [productos, setProductos] = useState([]);
+  const navigate = useNavigate()
+  const {toggleAuth} = useAuth()
 
   useEffect(() => {
     const traerProductos = async () => {
@@ -25,9 +25,11 @@ function Products() {
     traerProductos();
   }, []);
 
+  const handleClick = (item)=>{navigate(`/productos/${item._id}`)
+    toggleAuth()}
   return (
     <>
-      <h2>Productos Actualmente en Subasta</h2>
+      <h2 className="center">Productos Actualmente en Subasta</h2>
       <div className="orden">
         {productos.map((item) => (
           <Card
@@ -45,11 +47,11 @@ function Products() {
               <Card.Text>
                 {item.descripcion}
               </Card.Text>
-              <Link
-                to={`/productos/${item._id}`}
+              <Button
+                onClick={()=>handleClick(item)}
               >
                 Conoce los precios
-              </Link>
+              </Button>
             </Card.Body>
           </Card>
         ))}
