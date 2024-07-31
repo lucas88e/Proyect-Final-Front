@@ -4,6 +4,8 @@ import { Avatar } from "@mui/material";
 
 function MiPerfil() {
   const { user } = useShoppingCarContext();
+  
+  console.log(user.avatar)
   return (
     <div>
            <img className="profile-image" src={user.avatar}/>

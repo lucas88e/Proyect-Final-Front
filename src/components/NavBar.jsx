@@ -30,6 +30,8 @@ function NavBars() {
       toggleAuth();
       localStorage.removeItem("token");
       localStorage.removeItem("user");
+      window.location.reload();
+
     } catch (error) {
       console.error("Fallo de logout", error);
     }
@@ -59,6 +61,7 @@ function NavBars() {
             <Nav.Link as={Link}  to="/productos">
               Productos
             </Nav.Link>
+        
 
             <NavDropdown
               title="Categorías"

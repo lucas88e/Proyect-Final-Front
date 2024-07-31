@@ -14,14 +14,6 @@ export const AuthProvider = ({ children }) => {
     }
   }, []);
 
-  const login = (token)=>{
-    localStorage.setItem("token", token)
-    setIsAuth(true)
-  }
-  const logout = () => {
-    localStorage.removeItem("token");
-    setIsAuthenticated(false);
-  };
 
 
   const toggleAuth = () => {
@@ -30,7 +22,7 @@ export const AuthProvider = ({ children }) => {
   
 
   return (
-    <AuthContext.Provider value={{  toggleAuth,isAuth,login,logout }}>
+    <AuthContext.Provider value={{  toggleAuth,isAuth }}>
       {children}
     </AuthContext.Provider>
   );
