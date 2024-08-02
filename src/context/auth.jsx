@@ -5,7 +5,7 @@ import React, { createContext, useState, useContext,useEffect } from 'react';
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [isAuth,setIsAuth] = useState(!!localStorage.getItem("token"))
+  const [isAuth,setIsAuth] = useState(false)
 
   useEffect(() => {
     const token = localStorage.getItem("token");

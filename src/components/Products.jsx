@@ -8,11 +8,12 @@ import Card from "react-bootstrap/Card";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/auth";
+import { useThemeContext } from "../context/ThemeContext";
 function Products() {
   const [productos, setProductos] = useState([]);
   const navigate = useNavigate()
   const {toggleAuth} = useAuth()
-
+  const {theme} = useThemeContext()
   useEffect(() => {
     const traerProductos = async () => {
       const response = await axios.get(
@@ -26,12 +27,13 @@ function Products() {
   }, []);
 
   const handleClick = (item)=>{navigate(`/productos/${item._id}`)
-    toggleAuth()}
+   }
   return (
     <>
       <h2 className="center">Productos Actualmente en Subasta</h2>
       <div className="orden">
         {productos.map((item) => (
+          <div className={`${theme}`}>
           <Card
             key={item._id}
             style={{ width: "18rem" }}
@@ -54,6 +56,7 @@ function Products() {
               </Button>
             </Card.Body>
           </Card>
+          </div>
         ))}
       </div>{" "}
     </>

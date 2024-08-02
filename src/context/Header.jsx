@@ -2,6 +2,7 @@ import { useShoppingCarContext } from "./shoppingCarContext";
 import { useAuth } from "./auth";
 import { Link } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
+import SwitchButton from "../components/ButtonTheme";
 
 const Header = () => {
   const { items, user } = useShoppingCarContext();
@@ -15,8 +16,9 @@ const Header = () => {
             className="imgLogo"
             width="250px"
             src="/logo2.png"
-          ></img>
+            ></img>
         </h1>
+            <SwitchButton/>
         {isAuth ? (
           <h3>Bienvenido {user.username}</h3>
         ) : (

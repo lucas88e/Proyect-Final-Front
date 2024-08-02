@@ -11,6 +11,8 @@ import { useAuth } from "../context/auth";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
 import Avatar from "@mui/material/Avatar";
+import SwitchButton from "./ButtonTheme";
+
 import {
   deepOrange,
   deepPurple,
@@ -41,7 +43,7 @@ function NavBars() {
       collapseOnSelect
       expand="lg"
       fixed="top"
-      className="p-4"
+      className="p-2"
       bg="dark"
       variant="dark"
     >
@@ -101,8 +103,10 @@ function NavBars() {
                     src={user?.avatar}
                   />
                 </Link>
+
+                
                 <Button
-                  className="btn btn-outline-light m-2"
+                  className="btn btn-outline-light m-2 p-3"
                   onClick={handleLogout}
                 >
                   Logout
@@ -118,6 +122,7 @@ function NavBars() {
                 </Nav.Link>
               </>
             )}
+    
           </Nav>
         </Navbar.Collapse>
       </Container>

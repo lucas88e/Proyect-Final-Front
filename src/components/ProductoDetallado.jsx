@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 import { useShoppingCarContext } from "../context/shoppingCarContext";
 import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
-import "./productoDetallado.css";
 import { useAuth } from "../context/auth";
 
 function ProductoDetallado() {
@@ -32,12 +31,10 @@ function ProductoDetallado() {
       ;
       const productData = response.data;
       productData.newPrice = productData.precio; 
-      toggleAuth()
       setProduct(productData);
      }catch(error){
-      toggleAuth()
        navigate("/")
-      alert("No tienes permisos logueate primero",error)
+      alert("No tienes permisorrrs logueate primero",error)
 
      }
     };

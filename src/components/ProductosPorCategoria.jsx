@@ -23,19 +23,19 @@ function ProductosPorCategoria({categoria}) {
                  'x-auth-token': localStorage.getItem("token")
              }
          });
-         toggleAuth()
          const productData = response.data
          setProductos(productData);
         } catch (error) {
-          toggleAuth()
-          alert("No tienes permisos logueate primero",error)
+            navigate("/")
+      window.location.reload();
+            alert("No tienes permisos logueate, primero",error)
         }
       };
       getProductos();
-    
-  }, []);
-  const handleClick = (producto)=>{navigate(`/productos/${producto._id}`)
-  toggleAuth()}
+      
+    }, []);
+    const handleClick = (producto)=>{navigate(`/productos/${producto._id}`)
+}
 
   // Filtrar productos por categoría "Hogar"
   const productosFiltrados = productos.filter(producto => producto.categoria === categoria);
