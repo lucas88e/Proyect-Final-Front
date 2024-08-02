@@ -95,7 +95,7 @@ function NavBars() {
                     <ShoppingCartIcon className="m-2" />
                   </IconButton>
                 </Link>
-                <Link to="/perfil">
+                <Link to={`/perfil/${user._id}`}>
                   <Avatar
                     className="m-2"
                     sx={{ bgcolor: deepPurple[500] }}
