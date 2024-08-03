@@ -8,27 +8,7 @@ import { useEffect } from 'react'
 function Home() {
   const {theme} = useThemeContext()
   
-  // const url =  "http://localhost:5000"
-  // useEffect(() => {
-  //   const getProduct = async () => {
-  //    try{ const response = await axios.get(
-  //       `${url}/pujas`,
-  //        {
-  //         headers: {
-  //             'x-auth-token': localStorage.getItem("token")
-  //         }
-  //     })
-  //     ;
-  //     const productData = response.data;
-  //     console.log(productData);
-  //    }catch(error){
-  //     alert("No tienes permisorrrs logueate primero",error)
 
-  //    }
-  //   };
-
-  //   getProduct();
-  // }, []);
 
   return (
     <div className={`${theme}`}>

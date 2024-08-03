@@ -10,18 +10,21 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../context/auth";
 import { useThemeContext } from "../context/ThemeContext";
 function Products() {
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   const [productos, setProductos] = useState([]);
   const navigate = useNavigate()
   const {toggleAuth} = useAuth()
   const {theme} = useThemeContext()
   useEffect(() => {
+    
     const traerProductos = async () => {
       const response = await axios.get(
-        "http://localhost:5000/productos"
+        `${apiUrl}/productos`
       );
       const productosData = response.data;
       setProductos(productosData);
-      console.log(productosData);
+      console.log(response);
     };
     traerProductos();
   }, []);

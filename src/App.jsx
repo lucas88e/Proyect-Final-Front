@@ -15,6 +15,7 @@ import './App.css';
 import MiPerfil from './pages/MiPerfil';
 import Registro from './pages/Registro';
 import { useThemeContext,ThemeContextProvider } from './context/ThemeContext'
+
 function App() {
   return ( 
     <>

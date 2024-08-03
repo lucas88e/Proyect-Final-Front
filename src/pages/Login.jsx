@@ -21,7 +21,9 @@ const doLogin = async () =>{
   }
 
   try {
-    const responseLogin = await axios.post("http://localhost:5000/login", payload, {
+    const apiUrl = import.meta.env.VITE_API_URL;
+
+    const responseLogin = await axios.post(`${apiUrl}/login`, payload, {
       headers: {
         'Content-Type': 'application/json'
       }
@@ -37,7 +39,7 @@ const doLogin = async () =>{
     localStorage.setItem("token", login.token);
     localStorage.setItem("user", login._id);
 
-    const responseUser = await axios.get(`http://localhost:5000/users/${login._id}`);
+    const responseUser = await axios.get(`${apiUrl}/users/${login._id}`);
     const user = responseUser.data;
     setUser(user);
     toggleAuth()

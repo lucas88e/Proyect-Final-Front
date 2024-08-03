@@ -1,23 +1,29 @@
+
 import React, { useState, useEffect } from 'react';
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-function Categorias() {
+const App = () => {
   const [categorias, setCategorias] = useState([]);
 
   useEffect(() => {
     const getCategoria = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/categorias`);
+        const apiUrl = import.meta.env.VITE_API_URL;
+
+        if (!apiUrl) {
+          throw new Error('API URL is not defined');
+        }
+
+        const response = await axios.get(`${apiUrl}/categorias`);
         const categoriaData = response.data;
         setCategorias(categoriaData);
-        console.log(categoriaData);
       } catch (error) {
         console.error("Error fetching categories:", error);
       }
-    }
+    };
 
     getCategoria();
   }, []);
@@ -45,4 +51,5 @@ function Categorias() {
   );
 }
 
-export default Categorias;
+
+export default App;

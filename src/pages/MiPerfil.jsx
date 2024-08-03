@@ -7,7 +7,8 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/auth";
 function MiPerfil() {
   const { user } = useShoppingCarContext();
-  const url = "http://localhost:5000";
+    const apiUrl = import.meta.env.VITE_API_URL;
+    const url = "http://localhost:5000"
   const { idUser } = useParams();
   const navigate = useNavigate();
   const toggleAuth = useAuth();
@@ -31,7 +32,7 @@ function MiPerfil() {
     e.preventDefault();
     try {
       const response = await axios.patch(
-        `${url}/updateUser/${idUser}`,
+        `${apiUrl}/updateUser/${idUser}`,
         formData,
         {
           headers: {
@@ -56,7 +57,7 @@ function MiPerfil() {
   const borrarUsuario = async (e) => {
     try {
       const response = await axios.delete(
-        `${url}/borrarUser/${idUser}`,
+        `${apiUrl}/borrarUser/${idUser}`,
         formData,
         {
           headers: {

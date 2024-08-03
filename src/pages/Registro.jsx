@@ -9,7 +9,7 @@ function Registro() {
     const navigate = useNavigate()
   
     const onSubmit = async (data) => {
-      const url = "http://localhost:5000/register";
+      const apiUrl = import.meta.env.VITE_API_URL;
       const formData = new FormData();
 
       // Agregar todos los campos al FormData
@@ -24,7 +24,7 @@ function Registro() {
       formData.append('genero', data.genero);
       formData.append('isAdmin', data.isAdmin);
       try {
-        const response = await axios.post(url, formData, {
+        const response = await axios.post(apiUrl, formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },

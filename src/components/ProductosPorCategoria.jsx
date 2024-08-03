@@ -16,8 +16,9 @@ function ProductosPorCategoria({categoria}) {
     
       const getProductos = async () => {
         try {
-          const url = `http://localhost:5000/productos`;
-          const response = await axios.get(url,
+          const apiUrl = import.meta.env.VITE_API_URL;
+
+          const response = await axios.get(`${apiUrl}/productos`,
             {
              headers: {
                  'x-auth-token': localStorage.getItem("token")

@@ -25,8 +25,10 @@ function NavBars() {
 
   const handleLogout = async () => {
     try {
+      const apiUrl = import.meta.env.VITE_API_URL;
+
       await axios.post(
-        "http://localhost:5000/logout"
+        `http://localhost:5000/logout`
       );
 
       toggleAuth();

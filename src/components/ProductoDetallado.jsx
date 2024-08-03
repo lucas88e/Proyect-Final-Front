@@ -18,11 +18,11 @@ function ProductoDetallado() {
   const { updateItems, user} = useShoppingCarContext();
   const {toggleAuth} = useAuth()
   const navigate = useNavigate()
-  const url =  "http://localhost:5000"
+  const apiUrl = import.meta.env.VITE_API_URL;
   useEffect(() => {
     const getProduct = async () => {
      try{ const response = await axios.get(
-        `${url}/productos/${id}`,
+        `${apiUrl}/productos/${id}`,
          {
           headers: {
               'x-auth-token': localStorage.getItem("token")

@@ -60,9 +60,7 @@ const Item = ({ itemData }) => {
   return (
     <div>
       <h3>Enhorabuena {user.username} has realizado una puja de {itemData.newPrice}€</h3>
-      {/* {itemData.nombre} - {itemData.newPrice} - <img src={itemData.imagen}/>
-      <button onClick={() => removeItem(itemData._id)}>Eliminar</button> */}
-
+  
 
       <Card key={itemData._id} className="card-horizontal">
       <Card.Img variant="top" src={itemData.imagen} />
