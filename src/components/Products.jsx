@@ -13,19 +13,32 @@ function Products() {
   const apiUrl = import.meta.env.VITE_API_URL;
 
   const [productos, setProductos] = useState([]);
+  const [loading,setLoading] = useState(true)
+
+
   const navigate = useNavigate()
   const {toggleAuth} = useAuth()
   const {theme} = useThemeContext()
   useEffect(() => {
     
     const traerProductos = async () => {
-      const response = await axios.get(
+      try{
+       const response = await axios.get(
         `${apiUrl}/productos`
       );
       const productosData = response.data;
       setProductos(productosData);
       console.log(response);
-    };
+    }
+    catch{
+      
+
+    }
+    finally{
+      setLoading(false)
+    }
+      }
+     
     traerProductos();
   }, []);
 
@@ -33,7 +46,9 @@ function Products() {
    }
   return (
     <>
+
       <h2 className="center">Productos Actualmente en Subasta</h2>
+
       <div className="orden">
         {productos.map((item) => (
           <div className={`${theme}`}>
@@ -67,23 +82,3 @@ function Products() {
 }
 
 export default Products;
-{
-  /* <Row xs={1} md={2} className="g-4">
-{productos.map((item,idx) => (
-  <Col key={idx}>
-    <Card>
-      <Card.Img variant="top" src="holder.js/100px160" />
-      <Card.Body>
-        <Card.Title>{item.nombre}</Card.Title>
-        <Card.Text>
-          This is a longer card with supporting text below as a natural
-          lead-in to additional content. This content is a little bit
-          longer.
-        </Card.Text>
-      </Card.Body>
-    </Card>
-  </Col>
-))}
-</Row>
-         */
-}

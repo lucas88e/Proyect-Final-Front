@@ -24,7 +24,7 @@ function Registro() {
       formData.append('genero', data.genero);
       formData.append('isAdmin', data.isAdmin);
       try {
-        const response = await axios.post(apiUrl, formData, {
+        const response = await axios.post(`${apiUrl}/register`, formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
